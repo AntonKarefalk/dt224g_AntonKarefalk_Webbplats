@@ -26,17 +26,41 @@
             </section>
 
             <section>
-                <fieldset>
-                    <h2>Din bokning</h2>
-                    <label for="fullname">För- och efternamn:</label>
-                    <input type="text" id="fullname" name="fullname" required>
+                <form>
+                    <fieldset>
+                        <h2>Din bokning</h2>
+                        <label for="fullname">För- och efternamn:</label>
+                        <input type="text" id="fullname" name="fullname" required>
 
-                    <label for="email">E-post:</label>
-                    <input type="email" id="email" name="email" required>
+                        <label for="email">E-post:</label>
+                        <input type="email" id="email" name="email" required>
 
-                    <label for="phone">Telefonnummer:</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </fieldset>
+                        <label for="phone">Telefonnummer:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="date">Datum:</label>
+                        <input type="date" id="date" name="date" required>
+
+                        <label for="time">Tid:</label>
+                        <select id="time" name="time" required>
+                            <option value="">Välj en tid</option>
+                            <option value="9:00">9:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </fieldset>
+
+                    <button type="submit">Skicka bokning</button>
+                </form>
 
             </section>
         </main>
