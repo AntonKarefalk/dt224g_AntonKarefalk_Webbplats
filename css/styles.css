@@ -203,6 +203,20 @@ footer a:hover {
         font-size: 16px;
     }
 
+    .menu-toggle {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+        width: auto;
+    }
+
+    .menu ul {
+        display: flex;
+        gap: 20px;
+    }
+
     .info {
         flex-direction: column;
     }
