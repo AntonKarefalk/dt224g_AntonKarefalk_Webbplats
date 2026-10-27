@@ -77,14 +77,35 @@ main section {
     object-fit: cover;
 }
 
+.salong-info {
+    background-color: #d0d0d2;
+}
 
+.salong-info p {
+    font-size: 13px;
+}
 
-form {
+.service {
+    display: inline-block;
+    width: 40%;
+    margin: 1%;
+    padding: 20px;
+    vertical-align: top;
+    background-color: white;
+    border-bottom: 3px solid #b69a5a;
+    text-align: left;
+}
+
+.service h2 {
+    text-align: center;
+}
+
+.booking-form {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    text-align: left;
     background-color: white;
+    text-align: left;
 }
 
 fieldset {
@@ -116,4 +137,13 @@ button {
 button:hover {
     background-color: #b69a5a;
     color: #111;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    background-color: #d9b56f;
 }
