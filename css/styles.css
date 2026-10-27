@@ -26,6 +26,25 @@ header h1 {
     font-weight: normal;
 }
 
+.menu {
+    display: none;
+    width: 100%;
+}
+
+.menu.open {
+    display: block;
+}
+
+.menu-toggle {
+    cursor: pointer;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 main {
     text-align: center;
 }
