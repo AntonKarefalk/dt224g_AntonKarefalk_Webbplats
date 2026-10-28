@@ -1,14 +1,25 @@
 "use strict";
 
 /* Burger menyn */
-const menuBTN = document.querySelector(".menu-toggle");
-const menu = document.querySelector(".menu");
+const menuButton = document.querySelector("#menuButton");
+const mainMenu = document.querySelector("#mainMenu");
 
-menuBTN.addEventListener("click", function(){
-    if(menu.classList.contains("open")){
-        menu.classList.remove("open")
+/* När någon klickar på menyknappen */
+menuButton.addEventListener("click", function() {
+
+    /* Öppna/stäng menyn */
+    mainMenu.hidden = !mainMenu.hidden;
+
+    /* Uppdaterar om menyn är öppen */
+    menuButton.setAttribute(
+        "aria-expanded", !mainMenu.hidden
+    );
+
+    /* Ändrar knappens beskrivning */
+    if (mainMenu.hidden) {
+        menuButton.setAttribute("aria-label", "Öppna meny");
     } else {
-        menu.classList.add("open")
+        menuButton.setAttribute("aria-label", "Stäng meny");
     }
 })
 
