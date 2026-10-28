@@ -32,8 +32,8 @@ const phoneInput = document.querySelector("#phone");
 const dateInput = document.querySelector("#date");
 const timeInput = document.querySelector("#time");
 
-const = document.querySelector("#errorlist");
-const = document.querySelector("#bookings");
+const errorList = document.querySelector("#errorlist");
+const bookingSection = document.querySelector("#bookings");
 
 /* Arrayen för felmeddelanden */
 let errors = [];
@@ -79,7 +79,54 @@ if (form !== null) {
             if (selectedDate < today) {
                 errors.push("Du får inte boka ett datum som har passerat.");
             }
+
+            /* Kontrollerar veckodagen och öppettiderna */
+            const day = selectedDate.getDay();
+            if (day === 0) {
+                errors.push("Salongen är stängd på söndagar.");
+            } else if (day === 5) {
+                errors.push("Vi har inga bokningstider på fredagar.");
+            } else if (day === 6) {
+
+                /* Lördag: öppet 10.00–15.00 */
+                if (
+                    timeInput.value !== "" &&
+                    (Number(timeInput.value.split(":")[0]) < 10 ||
+                    Number(timeInput.value.split(":")[0]) >= 15)
+                ) {
+                    errors.push("På lördagar kan du boka mellan 10.00 och 14.00.");
+                }
+            } else if (day === 1) {
+
+                /* Måndag: öppet 9.00–19.00 */
+                if (
+                    timeInput.value !== "" &&
+                    (Number(timeInput.value.split(":")[0]) < 9 ||
+                    Number(timeInput.value.split(":")[0]) >= 19)
+                ) {
+                    errors.push("På måndagar kan du boka mellan 9.00 och 18.00.");
+                }
+            } else {
+                /* Tisdag–torsdag: öppet 9.00–17.00 */
+                if (
+                    timeInput.value !== "" &&
+                    (Number(timeInput.value.split(":")[0]) < 9 ||
+                    Number(timeInput.value.split(":")[0]) >= 17)
+                ) {
+                    errors.push("Tisdag–torsdag kan du boka mellan 9.00 och 16.00.");
+                }
+            }
         }
 
+        /* Kollar att en tid har valts */
+        if (timeInput.value === "") {
+            errors.push("Du måste välja en tid.");
+        }
+
+        /* Visa felmeddelanden */
+        displayErrors();
+
+        /* "Return true" om det inte finns några fel */
+        return errors.length === 0;
     }
 }
