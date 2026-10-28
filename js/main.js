@@ -23,4 +23,22 @@ menuButton.addEventListener("click", function() {
     }
 })
 
+/* Bokningsystemet */
+/* element */
+const form = document.querySelector("#bookingform");
+const fullnameInput = document.querySelector("#fullname");
+const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const dateInput = document.querySelector("#date");
+const timeInput = document.querySelector("#time");
+
+const = document.querySelector("#errorlist");
+const = document.querySelector("#bookings");
+
+/* Arrayen för felmeddelanden */
+let errors = [];
+
+/* Array för bokningar */
+let bookings = [];
+
 
