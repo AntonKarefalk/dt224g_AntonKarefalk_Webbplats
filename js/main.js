@@ -142,4 +142,44 @@ if (form !== null) {
             errorList.appendChild(listItem)
         });
     }
+
+    /* Skapar en bokningen utifrån formuläret */
+    function createBooking() {
+        /* Skapar ett objekt med kundens information */
+        const booking = {
+            fullname: fullnameInput.value.trim(),
+            email: emailInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            date: dateInput.value.trim,
+            time: timeInput.value.trim
+        };
+
+        /* Kontrollerar om tiden är redan bokad */
+        const alreadyExists = booking.some(function(savedBooking) {
+            return (
+                savedBooking.date === booking.date &&
+                savedBooking.time === booking.time
+            );
+        });
+
+        if (alreadyExists) {
+            errors.push("Den här tiden är redan bokad. Välj en annan tid.");
+            displayErrors();
+            return;
+        }
+
+        /* Lägg till bokningen på början av arrayen */
+        bookings.unshift(booking);
+
+        /* Sparar och visar bokningarna */
+        saveBookings();
+        renderBookings();
+
+        /* Rensar formuläret efter en bokning */
+        form.reset();
+
+        /* Tar bort tidigare felmeddelanden */
+        errors = [];
+        displayErrors();
+    }
 }
