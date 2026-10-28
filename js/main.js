@@ -129,4 +129,17 @@ if (form !== null) {
         /* "Return true" om det inte finns några fel */
         return errors.length === 0;
     }
+
+    /* Visar felmeddelanden på sidan */
+    function displayErrors() {
+        /* Tar bort förra felmeddelanden */
+        errorList.innerHTML = "";
+
+        /* Lägger alla fel i en lista */
+        errors.forEach(function(error) {
+            const listItem = document.createElement("li");
+            listItem.textContent = error;
+            errorList.appendChild(listItem)
+        });
+    }
 }
