@@ -150,12 +150,12 @@ if (form !== null) {
             fullname: fullnameInput.value.trim(),
             email: emailInput.value.trim(),
             phone: phoneInput.value.trim(),
-            date: dateInput.value.trim,
-            time: timeInput.value.trim
+            date: dateInput.value.trim(),
+            time: timeInput.value.trim()
         };
 
         /* Kontrollerar om tiden är redan bokad */
-        const alreadyExists = booking.some(function(savedBooking) {
+        const alreadyExists = bookings.some(function(savedBooking) {
             return (
                 savedBooking.date === booking.date &&
                 savedBooking.time === booking.time
@@ -240,15 +240,15 @@ if (form !== null) {
 
             /* Visar användarens namn */
             const name = document.createElement("p");
-            name.textContent = "Namn: " + bookning.fullname;
+            name.textContent = "Namn: " + booking.fullname;
 
             /* Visar datumet */
             const date = document.createElement("p");
-            date.textContent = "Datum: " + bookning.date;
+            date.textContent = "Datum: " + booking.date;
 
             /* Visar tiden */
             const time  = document.createElement("p");
-            time.textContent = "Tid: " + bookning.time;
+            time.textContent = "Tid: " + booking.time;
 
             /* Lägger till informationen i bokningen */
             card.appendChild(name);
@@ -265,4 +265,16 @@ if (form !== null) {
     }
 
     /* Eventlyssnaren */
+    form.addEventListener("submit", function(event) {
+        /* Stoppar sidan att laddas om */
+        event.preventDefault();
+
+        /* Skapar en bokning om allt fungerar */
+        if (validateForm()) {
+            createBooking();
+        }
+    });
+
+    /* När sidan laddas om så kommer de gamla bokningarna att visas */
+    loadBookings();
 }
