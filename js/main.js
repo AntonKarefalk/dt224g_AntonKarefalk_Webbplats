@@ -189,4 +189,34 @@ if (form !== null) {
         localStorage.setItem("salonBookings", JSON.stringify(bookings));
     }
 
+    /* Läser in tidigare bokningar */
+    function loadBookings() {
+        /* Hämtar dem sparade bokningarna */
+        const savedBookings = localStorage.getItem("salonBookings");
+
+        if (savedBookings !== null) {
+            try {
+                /* Gör om JSON strängen till JavaScript */
+                const savedData = JSON.parse(savedBookings);
+
+                /* Kollar om informationen är en array */
+                if (Array.isArray(savedData)) {
+                    bookings = savedData.filter(function(booking) {
+                        return booking !== null &&
+                        typeof booking === "object" &&
+                        typeof booking.fullname === "string" &&
+                        typeof booking.email === "string" &&
+                        typeof booking.phone === "string" &&
+                        typeof booking.date === "string" &&
+                        typeof booking.time === "string";
+                    });
+                } else {
+                    bookings = [];
+                }
+            } catch (error) {
+                /* Använder en tom array om informationen inte fungerar */
+                bookings = [];
+            }
+        }
+    }
 }
