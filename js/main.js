@@ -53,18 +53,33 @@ if (form !== null) {
         errors = [];
 
         /* Kollar om namnet är infyllt */
-        if (fullnameInput.ariaValueMax.trim() === "") {
+        if (fullnameInput.value.trim() === "") {
             errors.push("Du måste fylla i ditt namn.");
         }
 
         /* Kollar om e-posten är infyllt */
-        if (emailInput.ariaValueMax.trim() === "") {
+        if (emailInput.value.trim() === "") {
             errors.push("Du måste fylla i din e-post.");
         }
 
         /* Kollar om telefonnumret är infyllt */
-        if (phoneInput.ariaValueMax.trim() === "") {
+        if (phoneInput.value.trim() === "") {
             errors.push("Du måste fylla i ditt telefonnummer.");
         }
+
+        /* Kollar om ett datum har valts */
+        if (dateInput.value.trim() === "") {
+            errors.push("Du måste välja rätt datum.");
+        } else {
+            const selectedDate = new Date(dateInput.value + "T12:00:00");
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            /* Kollar om datumet har redan gått */
+            if (selectedDate < today) {
+                errors.push("Du får inte boka ett datum som har passerat.");
+            }
+        }
+
     }
 }
