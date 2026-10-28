@@ -218,5 +218,51 @@ if (form !== null) {
                 bookings = [];
             }
         }
+
+        /* Visar bokningarna */
+        renderBookings();
     }
+
+    /* Visar alla bokningar */
+    function renderBookings() {
+        /* Tar bort gamla visade bokningar */
+        bookingSection.innerHTML = "";
+
+        /* Felmeddelande om det inte finns några bokningar */
+        if (bookings.length === 0) {
+            bookingSection.textContent = "Inga bokningar ännu.";
+        }
+
+        /* Går igenom alla bokningar */
+        bookings.forEach(function(booking) {
+            /* Skapar ett element för bokningen */
+            const card = document.createElement("div");
+
+            /* Visar användarens namn */
+            const name = document.createElement("p");
+            name.textContent = "Namn: " + bookning.fullname;
+
+            /* Visar datumet */
+            const date = document.createElement("p");
+            date.textContent = "Datum: " + bookning.date;
+
+            /* Visar tiden */
+            const time  = document.createElement("p");
+            time.textContent = "Tid: " + bookning.time;
+
+            /* Lägger till informationen i bokningen */
+            card.appendChild(name);
+            card.appendChild(date);
+            card.appendChild(time);
+
+            /* Lägger en linje för att seperera bokningarna */
+            const divider = document.createElement("hr");
+            card.appendChild(divider);
+
+            /* Lägger till bokningen på sidan */
+            bookingSection.appendChild(card);
+        });
+    }
+
+    /* Eventlyssnaren */
 }
