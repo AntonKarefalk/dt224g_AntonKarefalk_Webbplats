@@ -182,4 +182,11 @@ if (form !== null) {
         errors = [];
         displayErrors();
     }
+
+    /* Sparar bokningarna i localStorage */
+    function saveBookings() {
+        /* Gör om arrayen till en JSON sträng */
+        localStorage.setItem("salonBookings", JSON.stringify(bookings));
+    }
+
 }
